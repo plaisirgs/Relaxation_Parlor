@@ -1,0 +1,61 @@
+Client
+belongs_to :massage_therapist
+has_many :appointments
+
+
+Massage Therapist
+has_many :clients
+has_many clients, through: :appointments
+
+Appointment
+-A client should be able to book an appointment for a specific date and time, massage, massage_therapist
+-appointment_datetime (in the appointments table to represent the date and time the appointment will tke place)
+
+Massage
+-type of massage
+-price
+-time length
+
+
+
+MASSAGE THERAPIST #SHOW page: I will need a Massage Therapist show page which displays the massage therapist's name, specialty, and appointments with each appointment's date time and client name (should link to the patient's show page)
+
+CLIENT #SHOW page: I will need to list the date and time for each of their appointments and links to the corresponding doctor's show page
+
+CLIENT #INDEX page: I will need to display a link for each client's show page and the total number of appointments they have
+
+APPOINTMENT #SHOW page: I will need to show the date, time, client and massage therapist for that particular appointment
+
+*no appointment index because people should not be able to see the appointments on display for anyone else
+
+
+class MassageTherapist < ActiveRecord::Base
+  has_many :appointments
+  has_many :clients, through: :appointments
+end
+
+class Appointment < ActiveRecord::Base
+  belongs_to :massage_therapist
+  belongs_to :client
+end
+
+class Client < ActiveRecord::Base
+  has_many :appointments
+  has_many :massage_therapists, through: :appointments
+end
+
+
+APPOINTMENTS TABLE
+
+-massage_therapist id
+-client id
+-appointment_date
+appointment id
+
+
+    create_table :appointments do |t|
+        t.belongs_to :client
+        t.belongs_to :massage_therapist
+        t.datetime :appointment_date
+        t.timestamps
+        end
