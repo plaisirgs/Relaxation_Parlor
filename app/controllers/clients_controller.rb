@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-class ClientsController < ApplicationController
+class UsersController < ApplicationController
   def index
-    @clients = Client.all
+    @users = User.all
   end
 end
