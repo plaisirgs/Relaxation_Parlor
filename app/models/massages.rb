@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-# class Colors < ActiveRecord::Base
-#   include Ruby::Enum
+class Massages < ActiveRecord::Base
+  include Ruby::Enum
 
-#   define :RED, 'red'
-#   define :GREEN, 'green'
-# end
+  define :RED, 'red'
+  define :GREEN, 'green'
+end
 
 
 
