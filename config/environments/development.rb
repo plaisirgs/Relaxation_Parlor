@@ -61,4 +61,7 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
+  ENV['GOOGLE_OAUTH_CLIENT_ID'] = "247520155910-ephb5e5rqn3u90m4fnmb3hialf27dt1m.apps.googleusercontent.com"
+  ENV['GOOGLE_OAUTH_CLIENT_SECRET'] = "EoboPWbtviFnnqJiTSfDgAP5"
 end
