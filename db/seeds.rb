@@ -23,3 +23,4 @@ MassageTherapist.create(first_name:  'Camilla', years_of_experience: 8, specialt
 MassageTherapist.create(first_name:  'Charlie', years_of_experience: 6, specialty: 'Prenatal Massage')
 MassageTherapist.create(first_name:  'Nate', years_of_experience: 3, specialty: 'Lymphatic Massage')
 MassageTherapist.create(first_name:  'Natalia', years_of_experience: 4, specialty: 'Lymphatic Massage')
+

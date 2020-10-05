@@ -1,1 +1,23 @@
 <h1>All the Appointments</h1>
+
+select_tag "massage_therapist", options_for_select(@massage_therapists.collect{ |u| [u.first_name] })
+
+
+<select id="massage_therapist" name="massage_therapist">
+  <option value="1">Lindsay</option>
+  <option value="2">Logan</option>
+  <option value="3">Alfred</option>
+  <option value="4">Almaretta</option>
+  <option value="5">Hank</option>
+  <option value="6">Harriet</option>
+  <option value="7">Melissa</option>
+  <option value="8">Monte</option>
+  <option value="9">Sergio</option>
+ <option value="10">Samantha</option>
+  <option value="11">Alice</option>
+  <option value="12">Alexander</option>
+  <option value="13">Camilla</option>
+  <option value="14">Charlie</option>
+  <option value="15">Nate</option>
+  <option value="16">Natalia</option>
+</select>
