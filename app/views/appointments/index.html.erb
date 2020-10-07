@@ -1,9 +1,12 @@
-<h1>All the Appointments</h1>
+<h1>Book an Appointment</h1>
 
-select_tag "massage_therapist", options_for_select(@massage_therapists.collect{ |u| [u.first_name] })
+<%# select_tag "massage_therapist", options_for_select(@massage_therapists.collect{ |u| [u.first_name] }) %>
 
-
-<select id="massage_therapist" name="massage_therapist">
+<%= date_select("article", "written_on", start_year: 2020) %>
+<br>
+<br>
+Select a Massage Therapist: <select id="massage_therapist" name="massage_therapist">
+ <option value="0"></option>
   <option value="1">Lindsay</option>
   <option value="2">Logan</option>
   <option value="3">Alfred</option>
@@ -21,3 +24,4 @@ select_tag "massage_therapist", options_for_select(@massage_therapists.collect{ 
   <option value="15">Nate</option>
   <option value="16">Natalia</option>
 </select>
+

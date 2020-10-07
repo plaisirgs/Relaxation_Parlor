@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_04_225619) do
+ActiveRecord::Schema.define(version: 2020_10_07_020057) do
 
   create_table "appointments", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "massage_therapist_id"
     t.string "user_id"
+    t.datetime "appointment_date"
   end
 
   create_table "massage_therapists", force: :cascade do |t|
