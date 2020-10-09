@@ -3,7 +3,10 @@
 Rails.application.routes.draw do
   root to: 'dashboards#show'
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
-  resources :massage_therapists
+
+  resources :massage_therapists do
+    resources :appointments
+  end
   resources :users
   resources :appointments
 
