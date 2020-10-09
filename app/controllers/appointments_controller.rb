@@ -2,13 +2,13 @@
 
 class AppointmentsController < ApplicationController
   def index
-    binding.pry
     if params[:massage_therapist_id]
     massage_therapist = MassageTherapist.find(params[:massage_therapist_id])
     @appointments = massage_therapist.appointments
     else 
     @appointments = Appointment.all
    end
+  end
 
    def create
     if params[:massage_therapist_id]
