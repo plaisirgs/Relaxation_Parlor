@@ -7,7 +7,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-MassageTherapist.create(first_name: 'Lindsay', years_of_experience: 5, specialty: 'Swedish Massage')
+MassageTherapist.create(first_name: 'Lindsay', years_of_experience: 5, specialty: 'Swedish Massage', biography: "I love dogs")
 MassageTherapist.create(first_name: 'Logan', years_of_experience: 5, specialty: 'Swedish Massage')
 MassageTherapist.create(first_name:  'Alfred', years_of_experience: 7, specialty: 'Shiatsu Massage')
 MassageTherapist.create(first_name:  'Almaretta', years_of_experience: 7, specialty: 'Shiatsu Massage')

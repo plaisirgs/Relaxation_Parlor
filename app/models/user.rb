@@ -3,6 +3,8 @@
 class User < ActiveRecord::Base
   has_many :appointments
   has_many :massage_therapists, through: :appointments
+  validates :full_name, length: { minimum: 6, maximum: 20 }
+  validates :password, length: { minimum: 6, maximum: 20 }
   validates_uniqueness_of :full_name, :email
   validates_presence_of :full_name, :email, :password
   validates_confirmation_of :password

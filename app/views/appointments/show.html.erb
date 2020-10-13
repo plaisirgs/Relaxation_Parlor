@@ -1,0 +1,5 @@
+<br>
+<br>
+Your appointment is scheduled for: <%= @appointment.appointment_date.to_formatted_s :long %><br>
+<%= link_to "Edit Appointment", edit_massage_therapist_appointment_path(@appointment) %><br>
+<%= link_to "Delete Appointment", massage_therapist_appointment_path(@appointment),method: :delete %>

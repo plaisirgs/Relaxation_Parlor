@@ -1,9 +1,5 @@
-<h1> Meet the Massage Therapists </h1>
+Schedule a Session with:
 
-<% @massage_therapists.each do |therapist|%>
-<p><%=therapist.first_name%></p>
-Years of Experience: <%=therapist.years_of_experience%><br>
-Specialty: <%=therapist.specialty%><br>
-Biography: <%=therapist.biography%><br>
-<br>
+<% @therapists.each do |therapist|%><br>
+<%= link_to therapist.first_name, massage_therapist_path(therapist) %>
 <% end%>
