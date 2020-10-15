@@ -1,7 +1,9 @@
 <h1>Welcome to the Relaxation Parlor!</h1>
 
-<%= link_to "Book an Appointment", massage_therapists_path %>
 
+
+Please select the type of massage you are interested in booking:
+<br>
 <% MassageTherapist.specialty.each do |therapist|%><br>
 <%= link_to therapist, massage_therapists_path(specialty: therapist) %>
 <% end%>
