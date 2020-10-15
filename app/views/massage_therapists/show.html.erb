@@ -2,5 +2,5 @@
 <br>
 <%= @therapist.first_name %><br>
 Years of Experience: <%= @therapist.years_of_experience %><br>
-<%= @therapist.biography %>
+<%= @therapist.biography %><br>
 <%= link_to "Book with #{@therapist.first_name}", new_massage_therapist_appointment_path(@therapist)%>
