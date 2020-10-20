@@ -3,7 +3,8 @@
 
 
 Please select the type of massage you are interested in booking:
-<br>
+
 <% MassageTherapist.specialty.each do |therapist|%><br>
-<%= link_to therapist, massage_therapists_path(specialty: therapist) %>
+<%= link_to therapist, massage_therapists_path(specialty: therapist) %> 
 <% end%>
+

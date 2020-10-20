@@ -2,9 +2,10 @@
 
 class MassageTherapistsController < ApplicationController
   def index
-    @massage_therapists = MassageTherapist.all
+     @massage_therapists = MassageTherapist.all
         @therapists = MassageTherapist.where(specialty: params[:specialty])
   end
+
 
   def show
     @therapist = MassageTherapist.find(params[:id])
