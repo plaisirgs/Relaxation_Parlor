@@ -11,14 +11,31 @@ class AppointmentsController < ApplicationController
   end
 
    def create
-    if params[:massage_therapist_id]
-       massage_therapist = MassageTherapist.find(params[:massage_therapist_id])
-       @appointment = massage_therapist.appointments.build[params:appointment]
+    if params[:appointment][:massage_therapist_id]
+       @massage_therapist = MassageTherapist.find(params[:appointment][:massage_therapist_id])
+       @date = DateTime.new(params[:years].to_i, params[:months].to_i, params[:days].to_i, params[:hours].to_i, params[:minutes].to_i)
+      
+      @check_availability = @massage_therapist.appointments.find_by(appointment_date: @date)
+      unless @check_availability.nil?
+        flash[:alert] = "This appointment date and time is not available."
+        redirect_to new_appointment_path and return
+      end
+      if params[:hours].to_i > 18 || params[:hours].to_i < 9
+        flash[:alert] = "The time you selected is out of the business hours."
+        redirect_to new_appointment_path and return
+      end
+       @my_params = appointment_params
+       @my_params[:appointment_date] = @date
+       @appointment = Appointment.new(@my_params)
+       @appointment.appointment_date = @date
+      #  @appointment = massage_therapist.appointments.build[@my_params]
     else
+  
        @appointment = Appointment.new(appointment_params)
     end
     if @appointment.save
-      redirect_to @appointment
+      # @massage_therapist.appointments << @appointment
+      redirect_to @appointment and return
     else 
       render :new
     end
@@ -39,7 +56,9 @@ class AppointmentsController < ApplicationController
    def update
     @appointment = Appointment.find(params[:id])
     if @appointment.update(appointment_params)
-      redirect_to @appointment
+       @date = DateTime.new(params[:years].to_i, params[:months].to_i, params[:days].to_i, params[:hours].to_i, params[:minutes].to_i)
+      @appointment.update(appointment_date: @date)
+       redirect_to @appointment
     else
       render :edit
     end
@@ -48,7 +67,8 @@ class AppointmentsController < ApplicationController
    def destroy
     @appointment = Appointment.find(params[:id])
     @appointment.destroy
-    redirect_to appointments_path
+    flash[:notice] = "You have successfully deleted this appointment."
+    redirect_to root_path
    end
 
    def appointment_params
