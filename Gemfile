@@ -28,9 +28,8 @@ gem 'rails_admin', '~> 2.0'
 # devise gem
 gem 'devise'
 
-gem 'ruby-enum', '~> 0.8.0'
-# Use Active Storage variant
-# gem 'image_processing', '~> 1.2'
+gem 'ruby-enum'
+gem 'image_processing', '~> 1.2'
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
 
