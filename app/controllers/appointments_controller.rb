@@ -20,7 +20,7 @@ class AppointmentsController < ApplicationController
         flash[:alert] = "This appointment date and time is not available."
         redirect_to new_appointment_path and return
       end
-      if params[:hours].to_i > 18 || params[:hours].to_i < 9
+      if params[:hours].to_i > 17 || params[:hours].to_i < 9
         flash[:alert] = "The time you selected is out of the business hours."
         redirect_to new_appointment_path and return
       end
@@ -28,13 +28,13 @@ class AppointmentsController < ApplicationController
        @my_params[:appointment_date] = @date
        @appointment = Appointment.new(@my_params)
        @appointment.appointment_date = @date
-      #  @appointment = massage_therapist.appointments.build[@my_params]
+    
     else
   
        @appointment = Appointment.new(appointment_params)
     end
     if @appointment.save
-      # @massage_therapist.appointments << @appointment
+   
       redirect_to @appointment and return
     else 
       render :new
@@ -43,6 +43,7 @@ class AppointmentsController < ApplicationController
 
    def new
     @appointment = Appointment.new(massage_therapist_id: params[:massage_therapist_id])
+    @massage_therapist_id = params[:massage_therapist_id]
    end
 
    def edit 
