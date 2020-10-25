@@ -1,6 +1,6 @@
 Relaxation Parlor
 
-This application is called Relaxation Parlor. Using this application, a user can book an appointment with a massage therapist who specializes in either Swedish, Shiatsu, Hot Stone, Aromatherapy, Deep Tissue, Reflexology, Prenatal, and Lympathic massages.
+This application is called Relaxation Parlor. Using this application, a user can book an appointment with a massage therapist who specializes in either Swedish, Shiatsu, Hot Stone, Aromatherapy, Deep Tissue, Reflexology, Prenatal, or Lympathic massages.
 
 ## Usage
 
