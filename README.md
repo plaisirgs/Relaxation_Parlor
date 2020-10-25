@@ -2,13 +2,15 @@ Relaxation Parlor
 
 This application is called Relaxation Parlor. Using this application, a user can book an appointment with a massage therapist who specializes in either Swedish, Shiatsu, Hot Stone, Aromatherapy, Deep Tissue, Reflexology, Prenatal, and Lympathic massages.
 
-## Installation
-
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
-
 ## Usage
 
-To run this application you will be using http://localhost:3000/. 
+In the terminal, first run 'bundle install'.
+Then in the terminal enter 'rails s' to start the server.
+To run this application, enter http://localhost:3000/ into the address bar in the browser of your choice. 
+
+ ## Technologies 
+
+Rails 6 
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
