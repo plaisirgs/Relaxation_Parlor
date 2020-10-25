@@ -1,35 +1,37 @@
 Relaxation Parlor
 
+This application is called Relaxation Parlor. Using this application, a user can book an appointment with a massage therapist who specializes in either Swedish, Shiatsu, Hot Stone, Aromatherapy, Deep Tissue, Reflexology, Prenatal, and Lympathic massages.
 
+## Installation
 
-Your models must:
+Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
 
-• Include at least one has_many, at least one belongs_to, and at least two has_many :through relationships
+## Usage
 
-• Include a many-to-many relationship implemented with has_many :through associations. The join table must include a user-submittable attribute — that is to say, some attribute other than its foreign keys that can be submitted by the app's user
+To run this application you will be using http://localhost:3000/. 
 
-----
-Your models must include reasonable validations for the simple attributes. You don't need to add every possible validation or duplicates, such as presence and a minimum length, but the models should defend against invalid data.
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
----
+## License
+MIT License
 
-You must include at least one class level ActiveRecord scope method. a. Your scope method must be chainable, meaning that you must use ActiveRecord Query methods within it (such as .where and .order) rather than native ruby methods (such as #find_all or #sort).
----
+Copyright (c) 2020 plaisirgs
 
-Your application must provide standard user authentication, including signup, login, logout, and passwords.
----
-Your authentication system must also allow login from some other service. Facebook, Twitter, Foursquare, Github, etc...
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
----
-You must include and make use of a nested resource with the appropriate RESTful URLs.
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
-• You must include a nested new route with form that relates to the parent resource
-
-• You must include a nested index or show route
-
-----
-Your forms should correctly display validation errors.
-
-a. Your fields should be enclosed within a fields_with_errors class
-
-b. Error messages describing the validation failures must be present within the view.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
