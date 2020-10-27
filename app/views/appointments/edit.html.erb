@@ -5,8 +5,11 @@
 <%= form_for @appointment do |t| %>
   <label for="hour">Hour:</label>
   <input type="number" id="hours" name="hours" min="1" max="24">
+
   <label for="minutes">Minutes:</label>
   <input type="number" id="minutes" name="minutes" min="00" max="00">
+
+
 
   <label >Choose an appointment date:</label>
   <select name="years" id="year">
@@ -63,6 +66,5 @@
  
 
 <%= t.hidden_field :user_id, :value => current_user.id %>
-<%= t.hidden_field :massage_therapist_id, :value => current_user.id %>
 <%= t.submit %>
 <% end%>
