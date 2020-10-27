@@ -20,10 +20,10 @@ class AppointmentsController < ApplicationController
         flash[:alert] = "This appointment date and time is not available."
         redirect_to new_appointment_path and return
       end
-      if params[:hours].to_i > 17 || params[:hours].to_i < 9
-        flash[:alert] = "The time you selected is out of the business hours."
-        redirect_to new_appointment_path and return
-      end
+      # if params[:hours].to_i > 17 || params[:hours].to_i < 9
+      #   flash[:alert] = "The time you selected is out of the business hours."
+      #   redirect_to new_appointment_path and return
+      # end
        @my_params = appointment_params
        @my_params[:appointment_date] = @date
        @appointment = Appointment.new(@my_params)
