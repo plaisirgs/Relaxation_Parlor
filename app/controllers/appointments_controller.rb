@@ -3,6 +3,11 @@
 class AppointmentsController < ApplicationController
   before_action :set_appointment, only: %i[show edit update destroy]
 
+  def date_details
+    DateTime.new(appointment_params['appointment_date(1i)'].to_i, appointment_params['appointment_date(2i)'].to_i, appointment_params['appointment_date(3i)'].to_i, appointment_params['appointment_date(4i)'].to_i, appointment_params['appointment_date(5i)'].to_i)
+  end
+
+
   def index
     if params[:massage_therapist_id]
       massage_therapist = MassageTherapist.find(params[:massage_therapist_id])
@@ -12,32 +17,34 @@ class AppointmentsController < ApplicationController
    end
   end
 
-  def create
-    if params[:appointment][:massage_therapist_id]
-      @massage_therapist = MassageTherapist.find(params[:appointment][:massage_therapist_id])
-      @date = DateTime.new(params[:years].to_i, params[:months].to_i, params[:days].to_i, params[:hours].to_i, params[:minutes].to_i, params[:minutes].to_i)
-
-      @check_availability = @massage_therapist.appointments.find_by(appointment_date: @date)
-      unless @check_availability.nil?
-        flash[:alert] = 'This appointment date and time is not available.'
-        redirect_to new_appointment_path and return
-      end
-      # if params[:hours].to_i > 17 || params[:hours].to_i < 9
-      #   flash[:alert] = "The time you selected is out of the business hours."
-      #   redirect_to new_appointment_path and return
-      # end
-      @my_params = appointment_params
-      @my_params[:appointment_date] = @date
-      @appointment = Appointment.new(@my_params)
-      @appointment.appointment_date = @date
-
-    else
-
-      @appointment = Appointment.new(appointment_params)
+def check_availability
+  @check_availability = @massage_therapist.appointments.find_by(appointment_date: @date)
+    unless @check_availability.nil?
+      flash[:alert] = 'This appointment date and time is not available.'
+      redirect_to new_massage_therapist_appointment_path(@massage_therapist) and return
     end
+  end
+
+  def unavailable_appointment
+      if appointment_params['appointment_date(4i)'].to_i > 17 || appointment_params['appointment_date(4i)'].to_i < 9
+      flash[:alert] = 'The time you selected is out of the business hours.'
+      redirect_to new_massage_therapist_appointment_path(@massage_therapist) and return
+    end
+  end
+
+  def create
+    @massage_therapist = MassageTherapist.find(params[:massage_therapist_id])
+    date_details
+    check_availability
+    unavailable_appointment
+
+    appointment_params[:appointment_date] = @date
+    @appointment = @massage_therapist.appointments.new(appointment_params)
+    @appointment.user = current_user
+
     if @appointment.save
 
-      redirect_to @appointment and return
+      redirect_to massage_therapist_appointment_path(@massage_therapist, @appointment) and return
     else
       render :new
     end
@@ -45,18 +52,22 @@ class AppointmentsController < ApplicationController
 
   def new
     @appointment = Appointment.new(massage_therapist_id: params[:massage_therapist_id])
-    @massage_therapist_id = params[:massage_therapist_id]
+    @massage_therapist = MassageTherapist.find(params[:massage_therapist_id])
   end
 
-  def edit; end
+  def edit
+    @massage_therapist = MassageTherapist.find(params[:massage_therapist_id])
+  end
+ 
 
   def show; end
 
   def update
+    @massage_therapist = @appointment.massage_therapist
+    set_appointment
     if @appointment.update(appointment_params)
-      @date = DateTime.new(params[:years].to_i, params[:months].to_i, params[:days].to_i, params[:hours].to_i, params[:minutes].to_i)
-      @appointment.update(appointment_date: @date)
-      redirect_to @appointment
+     date_details
+      redirect_to [@massage_therapist, @appointment]
     else
       render :edit
     end
@@ -69,7 +80,7 @@ class AppointmentsController < ApplicationController
   end
 
   def appointment_params
-    params.require(:appointment).permit(:appointment_date, :user_id, :massage_therapist_id)
+    params.require(:appointment).permit(:appointment_date, :massage_therapist_id)
   end
 
   def set_appointment
