@@ -1,14 +1,12 @@
 
-<% @appointments.each do |appointment|%>
 <br>
 <br>
-Your appointment is scheduled for: <%= appointment.appointment_date.to_formatted_s :long %><br>
-Massage Therapist: <%= appointment.massage_therapist.first_name %><br>
-Type of Massage: <%= appointment.massage_therapist.specialty %><br>
-Price: $<%= appointment.massage_therapist.price%><br>
-<% if current_user.appointments.include?(appointment) %>
-    <%= link_to "Edit Appointment", edit_massage_therapist_appointment_path(appointment.massage_therapist,appointment) %><br>
-    <%= link_to "Delete Appointment", massage_therapist_appointment_path(appointment.massage_therapist,appointment),method: :delete %><br>
+Your appointment is scheduled for: <%= @appointment.appointment_date.to_formatted_s :long %><br>
+Massage Therapist: <%= @appointment.massage_therapist.first_name %><br>
+Type of Massage: <%= @appointment.massage_therapist.specialty %><br>
+Price: $<%= @appointment.massage_therapist.price%><br>
+<% if current_user.appointments.include?(@appointment) %>
+    <%= link_to "Edit Appointment", edit_massage_therapist_appointment_path(@appointment.massage_therapist,@appointment) %><br>
+    <%= link_to "Delete Appointment", massage_therapist_appointment_path(@appointment.massage_therapist,@appointment),method: :delete %><br>
 <% end %>
 <%= link_to "Back to Homepage", root_path%>
-<% end %>

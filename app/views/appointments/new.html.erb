@@ -1,11 +1,15 @@
 <br>
 <br>
 <br>
-<%= form_for [@appointment] do |t| %>
 
- <%=t.datetime_select :appointment_date%>
- <%= t.hidden_field :massage_therapist_id, value: @massage_therapist.id %>
-<%= t.submit %>
+<%= form_for [@appointment] do |t| %>
+    <%=t.datetime_select :appointment_date%>
+    <% if @massage_therapist %>
+        <%= t.hidden_field :massage_therapist_id, value: @massage_therapist.id %>
+    <% else %>
+        <%= t.select(:massage_therapist_id, MassageTherapist.all.collect {|u| [u.first_name, u.id]}) %>
+    <% end %>
+    <%= t.submit %>
 <% end%>
 
 

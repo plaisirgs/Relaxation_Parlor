@@ -1,0 +1,8 @@
+<br>
+<br>
+<br>
+<div class >
+All Users:
+<% @users.each do |user|%><br>
+<%= link_to user.full_name, appointment_path(user) %>
+<% end%>

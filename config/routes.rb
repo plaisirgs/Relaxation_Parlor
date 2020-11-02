@@ -8,7 +8,11 @@ Rails.application.routes.draw do
     resources :appointments
   end
   resources :users
-  resources :appointments
+  resources :appointments do
+    collection do
+      get :user
+    end
+  end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

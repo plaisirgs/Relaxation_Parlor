@@ -1,8 +1,6 @@
-
 <% @appointments.each do |appointment|%>
 <br>
 <br>
-
 Your appointment is scheduled for: <%= appointment.appointment_date.to_formatted_s :long %><br>
 Massage Therapist: <%= appointment.massage_therapist.first_name %><br>
 Type of Massage: <%= appointment.massage_therapist.specialty %><br>
